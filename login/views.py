@@ -26,7 +26,7 @@ def auth_view(request):
     else:
         return HttpResponseRedirect('/login/invalidlogin')
 
-@login_required(redirect_field_name = '/login/login')
+@login_required
 def loggedin(request):
     user = request.user
     if user.groups.filter(name='Restaurant'):
@@ -36,11 +36,11 @@ def loggedin(request):
 
 def invalidlogin(request):
     return render(request,'login/invalidlogin.html')
-'''
+
 def logout(request):
     auth.logout(request)
-    return render(request,'logout.html')
-'''
+    return render(request,'registration/logout.html')
+
 def register(request):
     #if request.method == 'POST':
     client_group = Group.objects.get(name = 'Client')
