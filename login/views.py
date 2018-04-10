@@ -8,6 +8,8 @@ from login.forms import *
 from django.contrib.auth.models import Group
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import login,logout
+from django.contrib import messages
+
 # Create your views here.
 '''
 def login(request):
@@ -38,8 +40,11 @@ def invalidlogin(request):
     return render(request,'login/invalidlogin.html')
 
 def logout(request):
-    auth.logout(request)
-    return render(request,'registration/logout.html')
+    if request.user.is_authenticated and request.user is not None:
+	    auth.logout(request)
+    messages.add_message(request, messages.INFO, 'You are Successfully Logged Out')
+    #return render(request,'registration/logout.html')  #registration/logout.html
+    return HttpResponseRedirect('/login/login/')
 
 def register(request):
     #if request.method == 'POST':

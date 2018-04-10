@@ -1,11 +1,12 @@
 {% extends "restaurant/base.html" %}
 {% block content %}
+{% load static %}
 <h2> item with following details has been added</h2>
-{{ new_item.item_name }}<br>
-{{ new_item.image }}<br>
-{{ new_item.item_price }}<br>
-<h2> your restaurant id and name is </h2>
-{{ restaurant.RID }}<br>
-{{ restaurant.name }}<br>
+item name :{{ new_item.item_name }}<br>
+
+<img calss="materialboxed" width="250"  src="{{ new_item.image.url }}"><br>
+price :{{ new_item.item_price }}<br>
+<h2> your restaurant name is :
+{{ restaurant.name }}</h2><br>
 Click <a href="/restaurant/add_item">here</a> to add more items
 {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'restaurant/base.html' %}
+{% block content %}
+{% for order in orders %}
+<div class="w3-container w3-light-blue">
+    oreder date : {{ order.time_placed }}<br>
+    items are<br>
+    <table border="2" width="50px">
+    <tr><td>item </td><td>price</td></tr>
+        {% for item in order.Items.all %}
+            <tr><td>{{ item.item_name }}</td><td>{{ item.item_price }}</td></tr>
+
+        {% endfor %}
+    </table>
+    <tr><td class="w3-large w3-dark-gray">total cost</td><td class="w3-dark-gray">{{ order.price }}</td></tr>
+    client who ordered is {{ order.user.name }}
+</div><br>
+{% endfor %}
+{% endblock %}

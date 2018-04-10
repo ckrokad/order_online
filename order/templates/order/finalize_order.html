@@ -2,9 +2,12 @@
 {% block content %}
 <h2>You are ordering the following items</h2>
 {% for item in order.Items.all %}
-    {{ item.item_name }} Price: {{ item.item_price }}<br>
+    <div class="w3-container w3-blue">
+    {{ item.item_name }}
+    <img src="{{ item.image.url }}" width="150" height="150"> Price: {{ item.item_price }}<br>
+    </div><br>
 {% endfor %}
 <h2>Grand total is {{ total_cost }}</h2>
 Order had been placed.
-<a class="w3-button w3-blue" href='/order/ordered/'>Pay Now</a>
+<a class="w3-button w3-black" href='/order/ordered/'>Pay Now</a>
 {% endblock %}

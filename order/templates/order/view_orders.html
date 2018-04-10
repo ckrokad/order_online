@@ -1,11 +1,22 @@
 {% extends 'order/base.html' %}
 {% block content %}
 {% for order in orders %}
-    Your order cost is {{ order.price }}
-    items in it are
-        {% for item in order.Items.all %}
-            {{ item.item_name }} and {{ item.item_price }}
-        {% endfor %}
-    quantity of items is {{ order.quantity }} <br>
+<div class="w3-container w3-light-blue">
+    oreder date : {{ order.time_placed }}<br>
+    items are<br>
+    <table border="2" width="50px">
+    <tr>
+        <td>item</td><td>price</td>
+    </tr>
+    {% for item in order.Items.all %}
+    <tr>
+    <td>{{ item.item_name }}</td> <td>{{ item.item_price }}</td>
+
+    </tr>
+    {% endfor %}
+    <tr><td class="w3-large w3-dark-gray">total cost</td><td class="w3-dark-gray">{{ order.price }}</td></tr>
+    </table>
+    quantity of items is {{ order.quantity }}
+</div><br>
 {% endfor %}
 {% endblock %}
